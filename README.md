@@ -1,7 +1,7 @@
 ## PERSYARATAN
 1. Versi PHP 7.4+
 2. Framework Laravel
-3. Versi MYSQL 8
+3. Versi MYSQL 8.0
 4. Composer
 5. Peramban Web
 6. Server PHP (Laragon atau Xampp)
