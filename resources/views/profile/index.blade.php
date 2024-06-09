@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title','Profile User')
+@section('title','Profile')
 
 @section('content')
 <section class="section">
