@@ -27,7 +27,7 @@
             <span class="badge badge-success">Approve</span>
             @elseif ($model->status == 0)
             <span class="badge badge-warning">Waiting</span>
-            @else
+            @elseif ($model->status == 3)
             <span class="badge badge-danger">Reject</span>
             @endif
         </td>
