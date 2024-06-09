@@ -27,11 +27,13 @@ Route::get('/', function () {
     return redirect()->route('dashboard');
 });
 
+// Route User
 Route::prefix('user')->group(function() {
     Route::get('login', [AuthController::class, 'index'])->name('user.login');
     Route::post('login-post', [AuthController::class, 'loginAdmin'])->name('user.login-post');
 });
 
+// Route Menu
 Route::middleware('authorization')->group(function() {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
