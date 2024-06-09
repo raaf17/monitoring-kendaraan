@@ -1,7 +1,7 @@
 ## PERSYARATAN
 1. Versi PHP 7.4+
 2. Framework Laravel
-3. Versi MYSQL 8 untuk Win64 pada x86_64 (MySQL Community Server - GPL)
+3. Versi MYSQL 8
 4. Composer
 5. Peramban Web
 6. Server PHP (Laragon atau Xampp)
@@ -14,7 +14,7 @@
 5. Jalankan "php artisan key:generate" dan "php artisan config:clear"
 6. Jalankan "php artisan migrate" dan "php artisan db:seed" untuk membuat tabel dan memasukkan pengguna default
 7. Jalankan "php artisan serve"
-8. Buka peramban dan ketik localhost:8000
+8. Buka peramban dan ketik 127.0.0.1:8000
 
 ## CARA MENGGUNAKAN APLIKASI
 1. Masuk dengan pengguna
