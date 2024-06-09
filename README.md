@@ -1,38 +1,37 @@
-# Requirements
-1. PHP Version 7.4+
-3. Framework Laravel
-2. MYSQL Version 8 for Win64 on x86_64 (MySQL Community Server - GPL)
-3. Composer
-4. Web Browser
-5. PHP server (Laragon Or Xampp)
+## PERSYARATAN
+1. Versi PHP 7.4+
+2. Framework Laravel
+3. Versi MYSQL 8
+4. Composer
+5. Peramban Web
+6. Server PHP (Laragon atau Xampp)
 
-# INSTALLATION
-1. Clone the project
-2. Open terminal and type composer update or composer install (if not working type composer install --ignore-platform-reqs)
-3. Copy .env.example and paste here, rename .env.example.copy to .env
-4. Configure your database connection
-5. Run "php artisan key:generate" and "php artisan config:clear"
-6. Run "php artisan migrate" and "php artisan db:seed" to generate table and insert default user
-7. Run "php artisan serve"
-8. Open the browser and type localhost:8000
+## INSTALASI
+1. Clone proyek ini
+2. Buka terminal dan ketik `composer update` atau `composer install` (jika tidak berfungsi, ketik `composer install --ignore-platform-reqs`)
+3. Salin `.env.example` dan tempel di sini, ubah nama `.env.example.copy` menjadi `.env`
+4. Konfigurasikan koneksi basis data Anda
+5. Jalankan "php artisan key:generate" dan "php artisan config:clear"
+6. Jalankan "php artisan migrate" dan "php artisan db:seed" untuk membuat tabel dan memasukkan pengguna default
+7. Jalankan "php artisan serve"
+8. Buka peramban dan ketik 127.0.0.1:8000
 
-
-# HOW TO USE THE APP
-1. Login with admin user
-   1. Username: admin
-   2. Password: 12345
-2. Go to perusahaan page and create perusahaan
-3. After that go to kendaraan page and create kendaraan
-4. Go to request kendaraan page and create request kendaraan
-5. After that you can approve your request kendaraan
-6. After that you must be logout
-7. Login with pejabat User
-   1. Username: pejabat
-   2. Password: admin
-8. Go to request kendaraan page and approve the request
-9. You can see status column change
-10. After that you must be logout and login with admin user
-11. Go to kendaraan menu and select dropdown monitoring kendaraan
-12. Here you can see the status and history of the kendaraan
-13. If you want see your log activity, you can go to log activity menu
-14. After that there profile menu, you can edit your username and password here
+## CARA MENGGUNAKAN APLIKASI
+1. Masuk dengan pengguna
+   1. Nama pengguna: admin
+   2. Kata sandi: 12345
+2. Pergi ke halaman perusahaan dan buat perusahaan
+3. Setelah itu, pergi ke halaman kendaraan dan buat kendaraan
+4. Pergi ke halaman permintaan kendaraan dan buat permintaan kendaraan
+5. Setelah itu, Anda dapat menyetujui permintaan kendaraan Anda
+6. Setelah itu, Anda harus keluar
+7. Masuk dengan pengguna pejabat
+   1. Nama pengguna: pejabat
+   2. Kata sandi: 12345
+8. Pergi ke halaman permintaan kendaraan dan setujui permintaan
+9. Anda dapat melihat kolom status berubah
+10. Setelah itu, Anda harus keluar dan masuk dengan pengguna admin
+11. Pergi ke menu kendaraan dan pilih dropdown monitoring kendaraan
+12. Di sini Anda dapat melihat status dan riwayat kendaraan
+13. Jika Anda ingin melihat log aktivitas Anda, Anda dapat pergi ke menu log aktivitas
+14. Setelah itu ada menu profil, Anda dapat mengedit nama pengguna dan kata sandi Anda di sini
