@@ -7,11 +7,15 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function index() {
-        return view('profile.index');
+    public function index()
+    {
+        return view('profile.index', [
+            'title' => 'Profile'
+        ]);
     }
 
-    public function update($id) {
+    public function update($id)
+    {
         $post = request()->all();
         if ($post['password'] <> $post['confirm_password']) {
             return redirect()->back()->with('error', 'Password & Konfirmasi Password Tidak Sama');
@@ -20,7 +24,7 @@ class ProfileController extends Controller
         if ($model) {
             if ($model->update([
                 'username' => $post['username'],
-                'password' => bcrypt($post['password']) 
+                'password' => bcrypt($post['password'])
             ])) {
                 return redirect()->back()->with('success', 'Data Berhasil Diubah');
             } else {

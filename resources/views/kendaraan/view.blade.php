@@ -25,25 +25,25 @@
         <td style="border-top: 0; border-bottom: 0;">{{ $model->bbm }}</td>
     </tr>
     <tr>
-        <td style="border-top: 0; border-bottom: 0;">Jadwal Service</td>
+        <td style="border-top: 0; border-bottom: 0;">Jadwal Terakhir Service</td>
         <td style="border-top: 0; border-bottom: 0;">:</td>
         <td style="border-top: 0; border-bottom: 0;">{{ date('d-m-Y', strtotime($model->jadwal_service)) }}</td>
     </tr>
     @if ($model->sewa == 1)
-        <tr>
-            <td style="border-top: 0; border-bottom: 0;">Biaya</td>
-            <td style="border-top: 0; border-bottom: 0;">:</td>
-            <td style="border-top: 0; border-bottom: 0;">{{ number_format($model->biaya) }}</td>
-        </tr>
-        <tr>
-            <td style="border-top: 0; border-bottom: 0;">Dari Tanggal</td>
-            <td style="border-top: 0; border-bottom: 0;">:</td>
-            <td style="border-top: 0; border-bottom: 0;">{{ date('d-m-Y', strtotime($model->dari_tanggal)) }}</td>
-        </tr>
-        <tr>
-            <td style="border-top: 0; border-bottom: 0;">Sampai Tanggal</td>
-            <td style="border-top: 0; border-bottom: 0;">:</td>
-            <td style="border-top: 0; border-bottom: 0;">{{ date('d-m-Y', strtotime($model->sampai_tanggal)) }}</td>
-        </tr>
+    <tr>
+        <td style="border-top: 0; border-bottom: 0;">Biaya</td>
+        <td style="border-top: 0; border-bottom: 0;">:</td>
+        <td style="border-top: 0; border-bottom: 0;">{{ number_format($model->biaya) }}</td>
+    </tr>
+    <tr>
+        <td style="border-top: 0; border-bottom: 0;">Dari Tanggal</td>
+        <td style="border-top: 0; border-bottom: 0;">:</td>
+        <td style="border-top: 0; border-bottom: 0;">{{ date('d-m-Y', strtotime($model->dari_tanggal)) }}</td>
+    </tr>
+    <tr>
+        <td style="border-top: 0; border-bottom: 0;">Sampai Tanggal</td>
+        <td style="border-top: 0; border-bottom: 0;">:</td>
+        <td style="border-top: 0; border-bottom: 0;">{{ date('d-m-Y', strtotime($model->sampai_tanggal)) }}</td>
+    </tr>
     @endif
 </table>

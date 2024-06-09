@@ -1,21 +1,21 @@
 @extends('layout')
 
-@section('title', 'Perusahaan')
+@section('title', 'Driver')
 
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h1>Perusahaan</h1>
+        <h1>Driver</h1>
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="#">Master Data</a></div>
-            <div class="breadcrumb-item">Perusahaan</div>
+            <div class="breadcrumb-item">Driver</div>
         </div>
     </div>
     
     <div class="section-body">
         <div class="card card-primary">
             <div class="card-header">
-                <h4>Perusahaan</h4>
+                <h4>Driver</h4>
                 <div class="card-header-action">
                     <button type="button" class="btn btn-primary" onclick="create()"><i class="fa fa-plus"></i> Tambah Data</button>
                 </div>
@@ -24,10 +24,8 @@
                 <table class="table table-hover table-striped table-bordered" id="table">
                     <thead>
                         <tr>
-                            <th width="150px">Nama Perusahaan</th>
-                            <th width="150px">Nama Tambang</th>
-                            <th width="261px">Alamat</th>
-                            <th>Jenis Perusahaan</th>
+                            <th width="150px">Nama Driver</th>
+                            <th width="602px">Alamat</th>
                             <th width="150px">Aksi</th>
                         </tr>
                     </thead>
@@ -46,12 +44,10 @@
             processing: false,
             serverSide: true,
             scrollX: true,
-            ajax: '',
+            ajax: '{{ route('driver') }}',
             columns: [
-            {data: 'nama_perusahaan', name: 'perusahaan.nama_perusahaan'},
-            {data: 'nama_tambang', name: 'tambang.nama_tambang'},
-            {data: 'alamat', name: 'perusahaan.alamat'},
-            {data: 'utama', name: 'perusahaan.utama'},
+            {data: 'nama_driver', name: 'driver.nama_driver'},
+            {data: 'alamat', name: 'driver.alamat'},
             {data: '_', searchable: false, orderable: false, class: 'text-center'},
             ]
         })
@@ -59,10 +55,10 @@
     
     function create() {
         $.ajax({
-            url: '{{ route('perusahaan.create') }}',
+            url: '{{ route('driver.create') }}',
             success: function(response) {
                 bootbox.dialog({
-                    title: 'Create Perusahaan',
+                    title: 'Create Driver',
                     message: response,
                 })
             }
@@ -72,7 +68,7 @@
     function store() {
         $('#formCreate .alert').remove();
         $.ajax({
-            url: '{{ route('perusahaan.store') }}',
+            url: '{{ route('driver.store') }}',
             type: 'POST',
             dataType: 'JSON',
             data: $('#formCreate').serialize(),
@@ -94,10 +90,10 @@
     
     function edit(id) {
         $.ajax({
-            url: '{{ route('perusahaan.edit') }}/'+id,
+            url: '{{ route('driver.edit') }}/'+id,
             success: function(response) {
                 bootbox.dialog({
-                    title: 'Edit Perusahaan',
+                    title: 'Edit Driver',
                     message: response,
                 })
             }
@@ -106,10 +102,10 @@
     
     function view(id) {
         $.ajax({
-            url: '{{ route('perusahaan.view') }}/'+id,
+            url: '{{ route('driver.view') }}/'+id,
             success: function(response) {
                 bootbox.dialog({
-                    title: 'Lihat Perusahaan',
+                    title: 'Lihat Driver',
                     message: response,
                 })
             }
@@ -119,7 +115,7 @@
     function update(id) {
         $('#formEdit .alert').remove();
         $.ajax({
-            url: '{{ route('perusahaan.update') }}/'+id,
+            url: '{{ route('driver.update') }}/'+id,
             type: 'POST',
             dataType: 'JSON',
             data: $('#formEdit').serialize(),
@@ -143,7 +139,7 @@
         bootbox.confirm("Apakah anda yakin ingin menghapus data ini?", function(result) { 
             if (result) {
                 $.ajax({
-                    url: '{{ route('perusahaan.delete') }}/'+id,
+                    url: '{{ route('driver.delete') }}/'+id,
                     success: function(response) {
                         if (response.success) {
                             toastr.success('Success', response.message);

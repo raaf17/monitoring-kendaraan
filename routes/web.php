@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DriverController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\LogActivityController;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RequestKendaraanController;
+use App\Http\Controllers\TambangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +36,26 @@ Route::middleware('authorization')->group(function() {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
+    Route::prefix('tambang')->group(function() {
+        Route::get('/', [TambangController::class, 'index'])->name('tambang');
+        Route::get('create', [TambangController::class, 'create'])->name('tambang.create');
+        Route::post('store', [TambangController::class, 'store'])->name('tambang.store');
+        Route::get('edit/{id?}', [TambangController::class, 'edit'])->name('tambang.edit');
+        Route::get('view/{id?}', [TambangController::class, 'view'])->name('tambang.view');
+        Route::post('update/{id?}', [TambangController::class, 'update'])->name('tambang.update');
+        Route::get('delete/{id?}', [TambangController::class, 'delete'])->name('tambang.delete');
+    });
+
+    Route::prefix('driver')->group(function() {
+        Route::get('/', [DriverController::class, 'index'])->name('driver');
+        Route::get('create', [DriverController::class, 'create'])->name('driver.create');
+        Route::post('store', [DriverController::class, 'store'])->name('driver.store');
+        Route::get('edit/{id?}', [DriverController::class, 'edit'])->name('driver.edit');
+        Route::get('view/{id?}', [DriverController::class, 'view'])->name('driver.view');
+        Route::post('update/{id?}', [DriverController::class, 'update'])->name('driver.update');
+        Route::get('delete/{id?}', [DriverController::class, 'delete'])->name('driver.delete');
+    });
+
     Route::prefix('perusahaan')->group(function() {
         Route::get('/', [PerusahaanController::class, 'index'])->name('perusahaan');
         Route::get('create', [PerusahaanController::class, 'create'])->name('perusahaan.create');

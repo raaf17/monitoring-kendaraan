@@ -19,15 +19,15 @@
                         <h4>Users</h4>
                     </div>
                     <div class="card-body">
-                        131
+                        {{ $user }}
                     </div>
                 </div>
             </div>
         </div>
-
+        
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
-                <div class="card-icon bg-danger">
+                <div class="card-icon bg-warning">
                     <i class="fas fa-building"></i>
                 </div>
                 <div class="card-wrap">
@@ -35,23 +35,7 @@
                         <h4>Perusahaan</h4>
                     </div>
                     <div class="card-body">
-                        131
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-            <div class="card card-statistic-1">
-                <div class="card-icon bg-warning">
-                    <i class="fas fa-motorcycle"></i>
-                </div>
-                <div class="card-wrap">
-                    <div class="card-header">
-                        <h4>Kendaraan</h4>
-                    </div>
-                    <div class="card-body">
-                        12313
+                        {{ $perusahaan }}
                     </div>
                 </div>
             </div>
@@ -60,6 +44,22 @@
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
                 <div class="card-icon bg-success">
+                    <i class="fas fa-motorcycle"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Kendaraan</h4>
+                    </div>
+                    <div class="card-body">
+                        {{ $kendaraan }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <div class="card card-statistic-1">
+                <div class="card-icon bg-info">
                     <i class="fas fa-bell"></i>
                 </div>
                 <div class="card-wrap">
@@ -67,7 +67,7 @@
                         <h4>Permintaan Kendaraan</h4>
                     </div>
                     <div class="card-body">
-                        313
+                        {{ $request_kendaraan }}
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                         width: [0, 4]
                     },
                     title: {
-                        text: 'Kendaraan Yang Digunakan'
+                        text: 'Kendaraan yang Digunakan'
                     },
                     dataLabels: {
                         enabled: true,

@@ -42,7 +42,7 @@
     var dataTable;
     $(function() {
         dataTable = $('#table').dataTable({
-            processing: true,
+            processing: false,
             serverSide: true,
             scrollX: true,
             ajax: '',
@@ -167,5 +167,5 @@
                 return validations;
             }
             
-</script>
-@endpush
+        </script>
+        @endpush

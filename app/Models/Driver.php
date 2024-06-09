@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Perusahaan extends Model
+class Driver extends Model
 {
     use HasFactory;
-    protected $table = 'perusahaan';
-    protected $fillable = ['id_tambang', 'nama_perusahaan', 'alamat', 'utama', 'created_by', 'updated_by'];
+    protected $table = 'driver';
+    protected $fillable = ['nama_driver', 'alamat', 'created_by', 'updated_by'];
     public $timestamps = true;
 }

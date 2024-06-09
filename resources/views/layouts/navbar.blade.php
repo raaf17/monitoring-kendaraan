@@ -12,7 +12,7 @@
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="{{ route('profile') }}" class="dropdown-item has-icon"><i class="far fa-user"></i> Profile</a>
                 <div class="dropdown-divider"></div>
-                <button class="dropdown-item has-icon text-danger" onclick="document.location.href='{{ route('logout') }}'"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                <button type="button" class="dropdown-item has-icon text-danger" onclick="document.location.href='{{ route('logout') }}'"><i class="fas fa-sign-out-alt mt-2"></i> <b>Logout</b></button>
             </div>
         </li>
     </ul>
