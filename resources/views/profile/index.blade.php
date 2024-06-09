@@ -28,6 +28,7 @@
                 @elseif(session('success'))
                 <div class="alert alert-success">{!! session('success') !!}</div>
                 @endif
+                
                 {!! Form::open(['method' => 'post', 'route' => ['profile.update',['id' => auth()->user()->id] ]]) !!}
                 <div class="row">
                     <div class="col-12">
@@ -67,9 +68,9 @@
                 <div class="text-right">
                     <button type="submit" class="btn btn-primary btn-lg btn-widest">Simpan</button>
                 </div>
-            </form>
+                {!! Form::close() !!}
+            </div>
         </div>
     </div>
-</div>
 </section>
 @endsection

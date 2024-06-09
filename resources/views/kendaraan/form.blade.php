@@ -37,18 +37,18 @@
     function sewaans() {
         if ($('#sewaan').is(':checked') == true) {
             $('#template').html(`
-                <div class="form-group">
-                    <label>Biaya</label>    
-                    <input type="text" class="form-control text-right" id="biaya" name="biaya" data-input-type="number-format" value="{{ isset($model->sewa) && $model->sewa == 1 ? $model->biaya : 0 }}">
-                </div>
-                <div class="form-group">
-                    <label>Dari Tanggal</label>    
-                    <input type="date" class="form-control datepicker" id="dariTanggal" name="dari_tanggal" data-input-type="dateinput" value="{{ isset($model->sewa) && $model->sewa == 1 ? date('d-m-Y', strtotime($model->dari_tanggal)) : null }}">
-                </div>
-                <div class="form-group">
-                    <label>Sampai Tanggal</label>    
-                    <input type="date" class="form-control datepicker" id="sampaiTanggal" name="sampai_tanggal" data-input-type="dateinput" value="{{ isset($model->sewa) && $model->sewa == 1 ? date('d-m-Y', strtotime($model->sampai_tanggal)) : null }}">
-                </div>
+            <div class="form-group">
+                <label>Biaya</label>    
+                <input type="text" class="form-control text-right" id="biaya" name="biaya" data-input-type="number-format" value="{{ isset($model->sewa) && $model->sewa == 1 ? $model->biaya : 0 }}">
+            </div>
+            <div class="form-group">
+                <label>Dari Tanggal</label>    
+                <input type="date" class="form-control datepicker" id="dariTanggal" name="dari_tanggal" data-input-type="dateinput" value="{{ isset($model->sewa) && $model->sewa == 1 ? date('d-m-Y', strtotime($model->dari_tanggal)) : null }}">
+            </div>
+            <div class="form-group">
+                <label>Sampai Tanggal</label>    
+                <input type="date" class="form-control datepicker" id="sampaiTanggal" name="sampai_tanggal" data-input-type="dateinput" value="{{ isset($model->sewa) && $model->sewa == 1 ? date('d-m-Y', strtotime($model->sampai_tanggal)) : null }}">
+            </div>
             `)
             $('#template').buildForm();
         } else {

@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Perusahaan;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
-use Illuminate\Support\Facades\Validator as FacadesValidator;
 
 class PerusahaanController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         if (request()->ajax()) {
-            return DataTables::of(Perusahaan::select('*'))
-                ->editColumn('utama', function($data) {
+            return DataTables::of(Perusahaan::select('perusahaan.*', 'tambang.nama_tambang')->join('tambang', 'tambang.id', 'perusahaan.id_tambang'))
+                ->editColumn('utama', function ($data) {
                     if ($data->utama == 1) {
                         return 'Pusat';
                     } else if ($data->utama == 2) {
@@ -20,24 +22,29 @@ class PerusahaanController extends Controller
                         return "Kontributor";
                     }
                 })
-                ->addColumn('_', function($data) {
-                    return '<button type="button" class="btn btn-info" onclick="view('.$data->id.')"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-warning text-light" onclick="edit('.$data->id.')"><i class="fa fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger" onclick="destroy('.$data->id.')"><i class="far fa-trash-alt"></i></button>';
+                ->addColumn('_', function ($data) {
+                    return '<button type="button" class="btn btn-info" onclick="view(' . $data->id . ')"><i class="fa fa-eye"></i></button>
+                <button type="button" class="btn btn-warning text-light" onclick="edit(' . $data->id . ')"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-danger" onclick="destroy(' . $data->id . ')"><i class="far fa-trash-alt"></i></button>';
                 })
                 ->rawColumns(['_', 'utama'])
                 ->make(true);
         }
-        return view('perusahaan.index');
+        return view('perusahaan.index', [
+            'title' => 'Perusahaan'
+        ]);
     }
 
-    public function create() {
+    public function create()
+    {
         return view('perusahaan.create');
     }
 
-    public function store() {
+    public function store()
+    {
         $post = request()->all();
-        $validator = FacadesValidator::make($post, [
+        $validator = Validator::make($post, [
+            'id_tambang' => 'required',
             'nama_perusahaan' => 'required',
             'alamat' => 'required',
             'utama' => 'required',
@@ -45,12 +52,12 @@ class PerusahaanController extends Controller
             'required' => ':attribute harus diisi'
         ]);
         if ($validator->fails()) {
-            return response()->json ([
+            return response()->json([
                 'message'  => 'Terjadi kesalahan input',
                 'errors' => $validator->errors()
             ], 400);
         }
-
+        
         $post['created_by'] = auth()->user()->username;
         if (Perusahaan::create($post)) {
             return response()->json([
@@ -65,13 +72,15 @@ class PerusahaanController extends Controller
         }
     }
 
-    public function edit($id) {
-        $model = Perusahaan::find($id);
+    public function edit($id)
+    {
+        $model = Perusahaan::select('perusahaan.*', 'tambang.nama_tambang')->join('tambang', 'tambang.id', 'perusahaan.id_tambang')->where('perusahaan.id', $id)->first();
         return view('perusahaan.edit', compact('model'));
     }
 
-    public function view($id) {
-        $model = Perusahaan::find($id);
+    public function view($id)
+    {
+        $model = Perusahaan::select('perusahaan.*', 'tambang.nama_tambang')->join('tambang', 'tambang.id', 'perusahaan.id_tambang')->where('perusahaan.id', $id)->first();
         if ($model->utama == 1) {
             $model->utama = 'Pusat';
         } else if ($model->utama == 2) {
@@ -82,17 +91,19 @@ class PerusahaanController extends Controller
         return view('perusahaan.view', compact('model'));
     }
 
-    public function update($id) {
+    public function update($id)
+    {
         $post = request()->all();
-        $validator = FacadesValidator::make($post, [
-            'nama_perusahaan' => 'required|unique:perusahaan,id,'.$id,
+        $validator = Validator::make($post, [
+            'id_tambang' => 'required',
+            'nama_perusahaan' => 'required|unique:perusahaan,id,' . $id,
             'alamat' => 'required',
             'utama' => 'required',
         ], [
             'required' => ':attribute harus diisi'
         ]);
         if ($validator->fails()) {
-            return response()->json ([
+            return response()->json([
                 'message'  => 'Terjadi kesalahan input',
                 'errors' => $validator->errors()
             ], 400);
@@ -113,7 +124,8 @@ class PerusahaanController extends Controller
         }
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $model = Perusahaan::find($id);
         if ($model) {
             if ($model->delete()) {

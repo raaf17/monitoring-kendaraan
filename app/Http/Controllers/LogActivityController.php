@@ -8,11 +8,14 @@ use Yajra\DataTables\Facades\DataTables;
 
 class LogActivityController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         if (request()->ajax()) {
             return DataTables::of(LogActivity::select('*'))
                 ->make(true);
         }
-        return view('log_activity.index');
+        return view('log_activity.index', [
+            'title' => 'Log Activity'
+        ]);
     }
 }

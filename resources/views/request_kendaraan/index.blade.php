@@ -23,7 +23,7 @@
                             @if (auth()->user()->role <> 'pegawai')
                             <a href="{{ route('request-kendaraan.export') }}" role="button" class="btn btn-warning">Export</a>
                             @endif
-                            <button type="button" class="btn btn-primary" onclick="create()">Create</button>
+                            <button type="button" class="btn btn-primary" onclick="create()">Tambah Data</button>
                         </div>
                     </div>
                     @else
@@ -37,9 +37,9 @@
                 <table class="table table-hover table-striped table-bordered" id="table">
                     <thead>
                         <tr>
-                            <th width="100">Pegawai</th>
+                            <th width="96">Pegawai</th>
                             <th width="100">Kendaraan</th>
-                            <th width="216">Tujuan</th>
+                            <th width="200">Tujuan</th>
                             <th width="80">Status</th>
                             <th width="100">Approve By</th>
                             <th width="190px">Status</th>
@@ -57,7 +57,7 @@
     var dataTable;
     $(function() {
         dataTable = $('#table').dataTable({
-            processing: true,
+            processing: false,
             serverSide: true,
             scrollX: true,
             ajax: '{{ route('request-kendaraan') }}',
@@ -260,5 +260,5 @@
                 return validations;
             }
             
-</script>
-@endpush
+        </script>
+        @endpush

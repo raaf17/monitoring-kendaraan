@@ -7,11 +7,13 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('auth.login');
     }
 
-    public function loginAdmin() {
+    public function loginAdmin()
+    {
         if (auth()->attempt(['username' => request()->username, 'password' => request('password')])) {
             if (auth()->user()->role == 'pegawai') {
                 return redirect()->route('request-kendaraan');
@@ -22,7 +24,8 @@ class AuthController extends Controller
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         auth()->logout();
         return redirect()->route('user.login');
     }

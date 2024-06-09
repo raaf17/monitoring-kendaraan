@@ -17,6 +17,7 @@ class CreateTableRequestKendaraan extends Migration
             $table->id();
             $table->integer('id_kendaraan');
             $table->integer('id_pegawai');
+            $table->integer('id_driver');
             $table->string('tujuan_pemesanan');
             $table->string('status');
             $table->integer('id_approval')->nullable();

@@ -9,42 +9,46 @@ use Yajra\DataTables\Facades\DataTables;
 
 class RequestKendaraanController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         if (request()->ajax()) {
             return DataTables::of(RequestKendaraan::RequestKendaraan())
-                ->addColumn('_', function($data) {
+                ->addColumn('_', function ($data) {
                     if (auth()->user()->role == 'pejabat') {
                         if ($data->status == 1) {
-                            return '<button type="button" class="btn btn-info" onclick="view('.$data->id.')"><i class="fa fa-eye"></i></button>
-                                    <button type="button" class="btn btn-danger" onclick="reject('.$data->id.')"><i class="fas fa-times"></i></button>';
+                            return '<button type="button" class="btn btn-info" onclick="view(' . $data->id . ')"><i class="fa fa-eye"></i></button>';
+                        } else if ($data->status == 3) {
+                            return '<button type="button" class="btn btn-info" onclick="view(' . $data->id . ')"><i class="fa fa-eye"></i></button>';
                         } else {
-                            return '<button type="button" class="btn btn-info" onclick="view('.$data->id.')"><i class="fa fa-eye"></i></button>
-                                    <button type="button" class="btn btn-success" onclick="approve_by_pejabat('.$data->id.')"><i class="fas fa-check"></i></button>
-                                    <button type="button" class="btn btn-danger" onclick="reject('.$data->id.')"><i class="fas fa-times"></i></button>';
+                            return '<button type="button" class="btn btn-info" onclick="view(' . $data->id . ')"><i class="fa fa-eye"></i></button>
+                        <button type="button" class="btn btn-success" onclick="approve_by_pejabat(' . $data->id . ')"><i class="fas fa-check"></i></button>
+                        <button type="button" class="btn btn-danger" onclick="reject(' . $data->id . ')"><i class="fas fa-times"></i></button>';
                         }
                     } else {
                         if ($data->status == 1) {
-                            return '<button type="button" class="btn btn-info" onclick="view('.$data->id.')"><i class="fa fa-eye"></i></button>';
+                            return '<button type="button" class="btn btn-info" onclick="view(' . $data->id . ')"><i class="fa fa-eye"></i></button>';
+                        } else if ($data->status == 3) {
+                            return '<button type="button" class="btn btn-info" onclick="view(' . $data->id . ')"><i class="fa fa-eye"></i></button>';
                         } else {
-                            return '<button type="button" class="btn btn-info" onclick="view('.$data->id.')"><i class="fa fa-eye"></i></button>
-                                    <button type="button" class="btn btn-success" onclick="approve('.$data->id.')"><i class="fas fa-check"></i></button>
-                                    <button type="button" class="btn btn-warning text-light" onclick="edit('.$data->id.')"><i class="fa fa-edit"></i></button>
-                                    <button type="button" class="btn btn-danger" onclick="destroy('.$data->id.')"><i class="far fa-trash-alt"></i></button>';
+                            return '<button type="button" class="btn btn-info" onclick="view(' . $data->id . ')"><i class="fa fa-eye"></i></button>
+                        <button type="button" class="btn btn-success" onclick="approve(' . $data->id . ')"><i class="fas fa-check"></i></button>
+                        <button type="button" class="btn btn-warning text-light" onclick="edit(' . $data->id . ')"><i class="fa fa-edit"></i></button>
+                        <button type="button" class="btn btn-danger" onclick="destroy(' . $data->id . ')"><i class="far fa-trash-alt"></i></button>';
                         }
                     }
                 })
-                ->editColumn('status', function($data) {
+                ->editColumn('status', function ($data) {
                     $html = "";
                     if ($data->status == 1) {
                         $html = '<span class="badge badge-success">Approve</span>';
                     } else if ($data->status == 0) {
                         $html = '<span class="badge badge-warning">Waiting</span>';
-                    } else {
+                    } else if ($data->status == 3) {
                         $html = '<span class="badge badge-danger">Reject</span>';
                     }
                     return $html;
                 })
-                ->editColumn('nama_pejabat', function($data) {
+                ->editColumn('nama_pejabat', function ($data) {
                     if ($data->status == 0) {
                         return '';
                     } else {
@@ -54,14 +58,18 @@ class RequestKendaraanController extends Controller
                 ->rawColumns(['_', 'status', 'nama_pejabat'])
                 ->make(true);
         }
-        return view('request_kendaraan.index');
+        return view('request_kendaraan.index', [
+            'title' => 'Permintaan Kendaraan'
+        ]);
     }
 
-    public function create() {
+    public function create()
+    {
         return view('request_kendaraan.create');
     }
 
-    public function store() {
+    public function store()
+    {
         $post = request()->all();
         $validator = Validator::make($post, [
             'id_pegawai' => 'required',
@@ -71,7 +79,7 @@ class RequestKendaraanController extends Controller
             'required' => ':attribute harus diisi'
         ]);
         if ($validator->fails()) {
-            return response()->json ([
+            return response()->json([
                 'message'  => 'Terjadi kesalahan input',
                 'errors' => $validator->errors()
             ], 400);
@@ -92,17 +100,20 @@ class RequestKendaraanController extends Controller
         }
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $model = RequestKendaraan::RequestKendaraan()->where('request_kendaraan.id', $id)->first();
         return view('request_kendaraan.edit', compact('model'));
     }
 
-    public function view($id) {
+    public function view($id)
+    {
         $model = RequestKendaraan::RequestKendaraan()->where('request_kendaraan.id', $id)->first();
         return view('request_kendaraan.view', compact('model'));
     }
 
-    public function update($id) {
+    public function update($id)
+    {
         $post = request()->all();
         $validator = Validator::make($post, [
             'id_pegawai' => 'required',
@@ -112,7 +123,7 @@ class RequestKendaraanController extends Controller
             'required' => ':attribute harus diisi'
         ]);
         if ($validator->fails()) {
-            return response()->json ([
+            return response()->json([
                 'message'  => 'Terjadi kesalahan input',
                 'errors' => $validator->errors()
             ], 400);
@@ -133,7 +144,8 @@ class RequestKendaraanController extends Controller
         }
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $model = RequestKendaraan::find($id);
         if ($model) {
             if ($model->delete()) {
@@ -155,12 +167,14 @@ class RequestKendaraanController extends Controller
         }
     }
 
-    public function approve($id) {
+    public function approve($id)
+    {
         $model = RequestKendaraan::RequestKendaraan()->where('request_kendaraan.id', $id)->first();
         return view('request_kendaraan.approve', compact('model'));
     }
 
-    public function approved($id) {
+    public function approved($id)
+    {
         $post = request()->all();
         $model = RequestKendaraan::find($id);
         if ($model) {
@@ -188,7 +202,8 @@ class RequestKendaraanController extends Controller
         return response()->json($response);
     }
 
-    public function approvedByPejabat($id) {
+    public function approvedByPejabat($id)
+    {
         $model = RequestKendaraan::find($id);
         if (auth()->user()->role == 'pejabat') {
             if ($model) {
@@ -217,11 +232,12 @@ class RequestKendaraanController extends Controller
         }
     }
 
-    public function reject($id) {
+    public function reject($id)
+    {
         $model = RequestKendaraan::find($id);
         if (auth()->user()->role == 'pejabat') {
             if ($model) {
-                if ($model->update(['id_approval2' => NULL, 'status' => 0])) {
+                if ($model->update(['id_approval2' => NULL, 'status' => 3])) {
                     return response()->json([
                         'success' => true,
                         'message' => 'reject berhasil'
@@ -246,7 +262,8 @@ class RequestKendaraanController extends Controller
         }
     }
 
-    public function export() {
+    public function export()
+    {
         $spreadsheet = IOFactory::load(public_path('report/riwayat_pemesanan.xlsx'));
         $worksheet = $spreadsheet->getActiveSheet();
         $model = RequestKendaraan::RequestKendaraan()->get();
@@ -268,7 +285,7 @@ class RequestKendaraanController extends Controller
             ),
         );
         $worksheet->getCell('A1')->setValue('Data Riwayat Pemesanan');
-        $worksheet->getCell('A2')->setValue("Di Buat Pada : ".date('d-m-Y H:i:s'));
+        $worksheet->getCell('A2')->setValue("Di Buat Pada : " . date('d-m-Y H:i:s'));
         foreach ($model as $key => $data) {
             $html = "";
             if ($data->status == 1) {
@@ -278,13 +295,13 @@ class RequestKendaraanController extends Controller
             } else {
                 $html = 'Reject';
             }
-            $worksheet->getCell('A'.$row)->setValue($no);
-            $worksheet->getCell('B'.$row)->setValue($data->created_at);
-            $worksheet->getCell('C'.$row)->setValue($data->nama_kendaraan);
-            $worksheet->getCell('D'.$row)->setValue($data->nama_pegawai);
-            $worksheet->getCell('E'.$row)->setValue($data->tujuan_pemesanan);
-            $worksheet->getCell('F'.$row)->setValue($html);
-            $worksheet->getCell('G'.$row)->setValue($data->nama_pejabat);
+            $worksheet->getCell('A' . $row)->setValue($no);
+            $worksheet->getCell('B' . $row)->setValue($data->created_at);
+            $worksheet->getCell('C' . $row)->setValue($data->nama_kendaraan);
+            $worksheet->getCell('D' . $row)->setValue($data->nama_pegawai);
+            $worksheet->getCell('E' . $row)->setValue($data->tujuan_pemesanan);
+            $worksheet->getCell('F' . $row)->setValue($html);
+            $worksheet->getCell('G' . $row)->setValue($data->nama_pejabat);
             for ($i = 0; $i < 7; $i++) {
                 $spreadsheet->getActiveSheet()->getStyle($cols[$i] . $row)->applyFromArray($style);
             }
@@ -292,7 +309,7 @@ class RequestKendaraanController extends Controller
             $row++;
         }
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
-        header('Content-Disposition: attachment; filename="riwayat_pemesanan_'.date('Y_m_d-H_i_s').'.xlsx"');
+        header('Content-Disposition: attachment; filename="riwayat_pemesanan_' . date('Y_m_d-H_i_s') . '.xlsx"');
         $writer->save("php://output");
     }
 }
