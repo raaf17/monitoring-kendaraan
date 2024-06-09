@@ -1,4 +1,4 @@
-## Persyaratan
+## PERSYARATAN
 1. Versi PHP 7.4+
 2. Framework Laravel
 3. Versi MYSQL 8 untuk Win64 pada x86_64 (MySQL Community Server - GPL)
