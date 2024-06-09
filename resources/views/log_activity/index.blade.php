@@ -16,9 +16,6 @@
         <div class="card card-primary">
             <div class="card-header">
                 <h4>Log Activity</h4>
-                <div class="card-header-action">
-                    <button type="button" class="btn btn-primary" onclick="create()"><i class="fa fa-plus"></i> Tambah Data</button>
-                </div>
             </div>
             <div class="card-body table-responsive">
                 <table class="table table-hover table-striped table-bordered" id="table">
