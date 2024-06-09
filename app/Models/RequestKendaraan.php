@@ -10,7 +10,7 @@ class RequestKendaraan extends Model
 {
     use HasFactory;
     protected $table = 'request_kendaraan';
-    protected $fillable = ['id_kendaraan', 'id_pegawai', 'id_driver', 'tujuan_pemesanan', 'status', 'id_approval', 'id_approval2', 'created_by', 'updated_by'];
+    protected $fillable = ['id_kendaraan', 'id_pegawai', 'id_driver', 'tujuan_pemesanan', 'tgl_pinjam', 'tgl_kembali', 'status', 'id_approval', 'id_approval2', 'created_by', 'updated_by'];
     public $timestamps = true;
 
     public function scopeRequestKendaraan()

@@ -75,6 +75,8 @@ class RequestKendaraanController extends Controller
             'id_pegawai' => 'required',
             'id_kendaraan' => 'required',
             'tujuan_pemesanan' => 'required',
+            'tgl_pinjam' => 'required',
+            'tgl_kembali' => 'required',
         ], [
             'required' => ':attribute harus diisi'
         ]);
@@ -119,6 +121,8 @@ class RequestKendaraanController extends Controller
             'id_pegawai' => 'required',
             'id_kendaraan' => 'required',
             'tujuan_pemesanan' => 'required',
+            'tgl_pinjam' => 'required',
+            'tgl_kembali' => 'required',
         ], [
             'required' => ':attribute harus diisi'
         ]);
