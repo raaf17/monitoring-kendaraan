@@ -28,21 +28,21 @@ class DatabaseSeeder extends Seeder
             'role' => 'pejabat',
         ]);
         Pegawai::create([
-            'nama_pegawai' => 'Spiderman',
+            'nama_pegawai' => 'Pegawai 1',
             'tanggal_lahir' => '1970-08-17',
             'status' => 1,
             'created_by' => 'system',
             'created_at' => date('Y-m-d H:i:s')
         ]);
         Pegawai::create([
-            'nama_pegawai' => 'Batman',
+            'nama_pegawai' => 'Pegawai 2',
             'tanggal_lahir' => '1970-08-17',
             'status' => 1,
             'created_by' => 'system',
             'created_at' => date('Y-m-d H:i:s')
         ]);
         Pejabat::create([
-            'nama_pejabat' => 'Ultraman',
+            'nama_pejabat' => 'Pejabat 1',
             'jabatan' => 'Direktur',
             'status' => 1,
             'dinas' => 'pusat',
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s')
         ]);
         Pejabat::create([
-            'nama_pejabat' => 'Thor',
+            'nama_pejabat' => 'Pejabat 2',
             'jabatan' => 'Direktur',
             'status' => 1,
             'dinas' => 'cabang',
