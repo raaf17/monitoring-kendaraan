@@ -12,11 +12,9 @@
                 <img class="img-profile rounded-circle" src="{{ asset('images/2.jpg') }}">
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <form class="form">
-                    <a href="{{ route('profile') }}" class="dropdown-item has-icon"><i class="far fa-user"></i> Profile</a>
-                    <div class="dropdown-divider"></div>
-                    <button type="button" class="dropdown-item has-icon text-danger" style="display: flex; align-items: center" onclick="document.location.href='{{ route('logout') }}'"><i class="fas fa-sign-out-alt mt-2"></i> <b>Logout</b></button>
-                </form>
+                <a href="{{ route('profile') }}" class="dropdown-item has-icon"><i class="far fa-user"></i> Profile</a>
+                <div class="dropdown-divider"></div>
+                <button type="button" class="dropdown-item has-icon text-danger" style="display: flex; align-items: center" onclick="document.location.href='{{ route('logout') }}'"><i class="fas fa-sign-out-alt"></i> <b>Logout</b></button>
             </div>
         </li>
     </ul>
