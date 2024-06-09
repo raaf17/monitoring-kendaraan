@@ -20,6 +20,16 @@
         <td style="border-top: 0; border-bottom: 0;">{{ $model->tujuan_pemesanan }}</td>
     </tr>
     <tr>
+        <td style="border-top: 0; border-bottom: 0;">Dari Tanggal</td>
+        <td style="border-top: 0; border-bottom: 0;">:</td>
+        <td style="border-top: 0; border-bottom: 0;">{{ $model->tgl_pinjam }}</td>
+    </tr>
+    <tr>
+        <td style="border-top: 0; border-bottom: 0;">Sampai Tanggal</td>
+        <td style="border-top: 0; border-bottom: 0;">:</td>
+        <td style="border-top: 0; border-bottom: 0;">{{ $model->tgl_kembali }}</td>
+    </tr>
+    <tr>
         <td style="border-top: 0; border-bottom: 0;">Status</td>
         <td style="border-top: 0; border-bottom: 0;">:</td>
         <td style="border-top: 0; border-bottom: 0;">

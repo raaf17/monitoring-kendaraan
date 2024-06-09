@@ -8,7 +8,7 @@
     <ul class="navbar-nav navbar-right">
         <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <img alt="image" src="{{ asset('images/2.jpg') }}" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block"><strong>Selamat Datang {{ auth()->user()->username }}</strong></div></a>
+            <div class="d-sm-none d-lg-inline-block"><strong>Selamat Datang, {{ auth()->user()->username }}</strong></div></a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="{{ route('profile') }}" class="dropdown-item has-icon"><i class="far fa-user"></i> Profile</a>
                 <div class="dropdown-divider"></div>

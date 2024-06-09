@@ -14,6 +14,14 @@
     {!! Form::label('tujuan', 'Tujuan Pemesanan') !!}
     {!! Form::textarea('tujuan_pemesanan', null, ['class' => 'form-control', 'id' => 'tujuan', 'rows' => 5]) !!}
 </div>
+<div class="form-group">
+    {!! Form::label('dariTanggal', 'Dari Tanggal') !!}
+    {!! Form::date('tgl_pinjam', null, ['class' => 'form-control datepicker', 'id' => 'dariTanggal', 'data-input-type' => 'dateinput']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('sampaiTanggal', 'Sampai Tanggal') !!}
+    {!! Form::date('tgl_kembali', null, ['class' => 'form-control datepicker', 'id' => 'sampaiTanggal', 'data-input-type' => 'dateinput']) !!}
+</div>
 @if (auth()->user()->role == 'admin')
 <div class="form-group">
     {!! Form::label('namaPejabat', 'Nama Pejabat') !!}
