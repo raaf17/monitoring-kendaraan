@@ -18,7 +18,7 @@
 
 ## CARA MENGGUNAKAN APLIKASI
 1. Masuk dengan pengguna
-   1. Nama pengguna: admin
+   1. Nama pengguna: Admin
    2. Kata sandi: 12345
 2. Pergi ke halaman perusahaan dan buat perusahaan
 3. Setelah itu, pergi ke halaman kendaraan dan buat kendaraan
@@ -26,7 +26,7 @@
 5. Setelah itu, Anda dapat menyetujui permintaan kendaraan Anda
 6. Setelah itu, Anda harus keluar
 7. Masuk dengan pengguna pejabat
-   1. Nama pengguna: pejabat
+   1. Nama pengguna: Pejabat
    2. Kata sandi: 12345
 8. Pergi ke halaman permintaan kendaraan dan setujui permintaan
 9. Anda dapat melihat kolom status berubah
